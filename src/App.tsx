@@ -2,6 +2,7 @@ import { VFC } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query-devtools'
+import { MainTask } from './components/MainTask'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,7 +17,13 @@ const App: VFC = () => {
   return (
     <div className="flex justsfy-center items-center flex-col min-h-screen text-gray-600 text-sm font-mono">
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter></BrowserRouter>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/">
+              <MainTask />
+            </Route>
+          </Switch>
+        </BrowserRouter>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </div>
