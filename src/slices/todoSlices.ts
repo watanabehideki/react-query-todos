@@ -23,14 +23,14 @@ export const taskSlice = createSlice({
   name: 'task',
   initialState,
   reducers: {
-    setEditedTask: (state, acition: PayloadAction<EditTask>) => {
-      state.editedTask = acition.payload
+    setEditedTask: (state, action: PayloadAction<EditTask>) => {
+      state.editedTask = action.payload
     },
     resetEditedTask: (state) => {
       state.editedTask = initialState.editedTask
     },
-    setEditedTag: (state, acition: PayloadAction<Tag>) => {
-      state.editedTag = acition.payload
+    setEditedTag: (state, action: PayloadAction<Tag>) => {
+      state.editedTag = action.payload
     },
     resetEditedTag: (state) => {
       state.editedTag = initialState.editedTag
@@ -38,7 +38,8 @@ export const taskSlice = createSlice({
   },
 })
 
-export const { setEditedTask, resetEditedTask, setEditedTag, resetEditedTag } = taskSlice.actions
+export const { setEditedTask, resetEditedTask, setEditedTag, resetEditedTag } =
+  taskSlice.actions
 
 export const selectTask = (state: RootState) => state.task.editedTask
 export const selectTag = (state: RootState) => state.task.editedTag

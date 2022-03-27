@@ -24,11 +24,10 @@ export const useMutateTask = () => {
       },
     }
   )
-
   const updateTaskMutation = useMutation(
     (task: EditTask) =>
       axios.put<Task>(
-        `${process.env.REACT_APP_REST_URL}/tasks/${task.id}`,
+        `${process.env.REACT_APP_REST_URL}/tasks/${task.id}/`,
         task
       ),
     {
@@ -46,13 +45,12 @@ export const useMutateTask = () => {
       },
     }
   )
-
   const deleteTaskMutation = useMutation(
     (id: number) =>
       axios.delete(`${process.env.REACT_APP_REST_URL}/tasks/${id}/`),
     {
       onSuccess: (res, variables) => {
-        const previousTodos = queryClient.getQueryData<Task[]>('task')
+        const previousTodos = queryClient.getQueryData<Task[]>('tasks')
         if (previousTodos) {
           queryClient.setQueryData<Task[]>(
             'tasks',

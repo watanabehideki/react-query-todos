@@ -11,8 +11,9 @@ export const useQueryTasks = () => {
   }
 
   return useQuery<Task[], Error>({
-    queryKey: "task",
+    queryKey: "tasks",
     queryFn: getTasks,
     staleTime: 0,
+    refetchOnWindowFocus: true,
   })
 }
